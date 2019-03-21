@@ -1,7 +1,8 @@
-#python program to read u of i cxr report and classify- in this case classify the normals
+#my first of several python programs to read u of i cxr report and classify- in this case classify the normals
 
 
-####make a list of all the file
+####make a list of the files the program classifies as mostly normal from a specific folder
+### folder r"C:\Users\makeda\programming\catapop\documents\ecgen-radiology\\ is just an example- later versions-->docerized
 
 
 import os
