@@ -1,0 +1,75 @@
+#python program to read u of i cxr report and classify
+
+
+####make a list of all the file
+
+
+import os
+import xml.etree.ElementTree as ET
+documents = os.listdir (r"C:\Users\makeda\programming\catapop\documents\ecgen-radiology")
+
+file_currently_reading =0
+file_number_count = len(documents)
+ 
+while file_currently_reading < file_number_count:
+
+    filename = documents[file_currently_reading]
+    
+#interate the loop
+
+
+    tree = ET.parse(r"C:\Users\makeda\programming\catapop\documents\ecgen-radiology\\"+filename)
+    root = tree.getroot()
+
+    c = os.getcwd ()
+    store = []
+    otherstorage = []
+    is_normal = False
+
+ 
+                 
+                 
+#if normal write path to list of normals
+    for child in root:
+        if child.tag == 'parentImage':
+            
+            print (child.get('id'))
+            
+            store.append (child)
+            
+        if child.tag == 'pmcId':
+            
+            print (child.get('id'))
+
+            otherstorage.append (child.get('id'))
+            
+        if child.tag == 'MeSH':
+                
+                print(child.getchildren()[0].text)
+            
+                if child.getchildren()[0].text ==  'normal':
+                    is_normal = True
+                    
+
+    if is_normal == True:
+        printhere = open('list_of_normal.csv','a')
+   
+        pmc_id = otherstorage[0]
+        
+        for child in store:
+            print((c+"/images"+"/"+(child.get('id'))+".png" ))
+    
+            printhere.write((c+"/images"+"/"+(child.get('id'))+".png"))
+            printhere.write(',')
+            printhere.write(pmc_id)
+            printhere.write('\n')   
+            
+           
+        printhere.close()
+        
+
+    file_currently_reading = file_currently_reading + 1
+
+    
+
+
