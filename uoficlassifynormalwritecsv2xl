@@ -24,6 +24,7 @@ while file_currently_reading < file_number_count:
     c = os.getcwd ()
     store = []
     otherstorage = []
+    
     is_normal = False
 
  
@@ -67,9 +68,35 @@ while file_currently_reading < file_number_count:
            
         printhere.close()
         
+    if is_normal == False:
+       printhere = open('list_of_abnormal.csv','a')
+       pmc_id = otherstorage[0]
+        
+       for child in store:
+            print((c+"/images"+"/"+(child.get('id'))+".png" ))
+    
+            printhere.write((c+"/images"+"/"+(child.get('id'))+".png"))
+            printhere.write(',')
+            printhere.write(pmc_id)
+            printhere.write(',')   
+
+
+           
+            textstorage = tree.findall(".//MedlineCitation/Article/Abstract/AbstractText[@Label='FINDINGS']")
+                    
+            
+            if textstorage:
+                printhere.write(textstorage[0].text or 'No findings')
+            else:
+                printhere.write('No findings')
+            printhere.write("\n")  
+            
+           
+       printhere.close()
 
     file_currently_reading = file_currently_reading + 1
 
     
 
+   
 
