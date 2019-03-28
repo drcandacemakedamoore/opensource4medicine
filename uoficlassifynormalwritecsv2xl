@@ -1,4 +1,4 @@
-#python program to read u of i cxr report and classify
+#python program to read u of i cxr report and classify in a very simple sense to either normal or abnormal, print text findings in abnormal list
 
 
 ####make a list of all the file
