@@ -1,4 +1,4 @@
-#python program to read u of i cxr report and classify, normal, abnormal and with a particular string- here "opacity"
+#python program to read u of i cxr report and classify
 
 
 ####make a list of all the file
@@ -99,13 +99,15 @@ while file_currently_reading < file_number_count:
                 printhere.write('No findings')
             printhere.write("\n")  
           
-            #MISSING but not "not opacity" then print to a seperate file
+          
 
             sub_string1_positive = "opacity"
             sub_string2_positive = "opacities"
+            sub_string1_negative = "no opacit"
+            
             
 
-            if sub_string1_positive in texthere or sub_string2_positive in texthere:
+            if (sub_string1_positive in texthere or sub_string2_positive in texthere) and sub_string1_negative not in texthere:
                 found_opacity = True
 
         printhere.close()
