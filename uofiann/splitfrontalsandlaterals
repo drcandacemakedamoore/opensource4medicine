@@ -1,0 +1,43 @@
+#python program to read u of i cxr pictures and classify if frontal (PA, AP) or lateral
+
+import os
+import shutil
+
+pictures = os.listdir (r"C:\Users\makeda\programming\catapop\images")
+
+file_currently_reading = 0
+file_number_count = len(pictures)
+ 
+while file_currently_reading < file_number_count:
+    filename = pictures[file_currently_reading]
+
+    
+   
+
+#interate the loop
+    # check if end of file name has 2001
+    # make a copy of the image into a folder for laterals
+    basename , extension = os.path.splitext(filename)
+    if basename.endswith("2001"):
+
+    
+        shutil.copy2(r"C:\Users\makeda\programming\catapop\images\\" + filename, r"C:\Users\makeda\programming\catapop\laterals\\" + filename )
+        
+   # check if end of file name has 1001     
+        # make a copy of the image into a folder for frontal
+
+    if basename.endswith("1001"):
+
+    
+        shutil.copy2(r"C:\Users\makeda\programming\catapop\images\\" + filename, r"C:\Users\makeda\programming\catapop\frontals\\" + filename )
+       
+        
+                 
+    file_currently_reading =    file_currently_reading +1
+    
+
+    
+
+    
+
+   
