@@ -1,0 +1,40 @@
+import logging
+import numpy as np
+import pandas as pd
+import pathlib
+import os
+import scipy
+import PIL
+import shutil
+import collections
+from PIL import Image
+from scipy import misc
+
+
+pictures = os.listdir (r"C:\Users\makeda\programming\catapop\images")
+
+file_currently_reading = 0
+file_number_count = len(pictures)
+ 
+while file_currently_reading < file_number_count:
+    filename = pictures[file_currently_reading]
+
+    im = Image.open(r"C:\Users\makeda\programming\catapop\images\\" + filename)
+
+
+    image_string = np.asarray(im)    
+    pastetodoc = open('list_of_png_as_arrays.bin','a')
+    pastetodoc.write(np.array2string(image_string))        
+   
+
+
+        
+                 
+    file_currently_reading =    file_currently_reading +1
+    
+
+
+
+       
+
+
