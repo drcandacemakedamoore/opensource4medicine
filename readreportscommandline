@@ -63,7 +63,8 @@ while report_currently_reading < report_number_count:
     has_matches = read_text(result, documents[report_currently_reading])
     print("{} (# {}) has_matches: {}".format(documents[report_currently_reading], report_currently_reading, has_matches))
     printhere = open('list_of_noted.txt','a')
-    printhere.write(str(report_currently_reading))
+    printhere.write(documents[report_currently_reading])
+    printhere.write(str(has_matches))
 
     
     
