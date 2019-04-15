@@ -1,0 +1,70 @@
+import os
+
+from argparse import ArgumentParser
+
+parser = ArgumentParser(description='Search for strongs in text')
+parser.add_argument(
+    'src',
+    default='.',
+    help='''
+    The source directory containing text files.
+    ''',
+)
+
+parser.add_argument(    
+    'input1',
+
+
+)
+parser.add_argument(    
+    
+    'input2',
+
+
+)
+
+args = parser.parse_args()
+
+
+
+
+
+documents= os. listdir (args.src)
+print (documents) 
+print (os.getcwd())
+
+# add later, place on gui to show files scanned
+
+def read_text(posh, current_report):
+    qoutes = open (os.getcwd()+"\\"+current_report, encoding="utf-8")
+    content_of_files = qoutes.read()
+    found = False
+    for line in posh:
+        if line in content_of_files:
+            found = True
+    print (content_of_files)
+    qoutes.close()
+    return found
+
+
+def read_list_of_bad():
+    
+    return [args.input1, args.input2]
+
+### set a counter on report_currently_reading to start at 0, started a loop
+report_number_count= len (documents)
+report_currently_reading = 0
+while report_currently_reading < report_number_count:
+
+    # 2 a report is searched for any strings that are inputs
+    result = read_list_of_bad()
+    print (result)
+    # 3indicate if there is a match in strings 
+    has_matches = read_text(result, documents[report_currently_reading])
+    print("{} (# {}) has_matches: {}".format(documents[report_currently_reading], report_currently_reading, has_matches))
+    printhere = open('list_of_noted.csv','a')
+    printhere.write(str(report_currently_reading))
+
+    
+    
+    report_currently_reading = report_currently_reading + 1
