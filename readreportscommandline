@@ -1,8 +1,13 @@
 import os
 
+
+# 0 the user defines the directory of files
+
+
 from argparse import ArgumentParser
 
-parser = ArgumentParser(description='Search for strongs in text')
+
+parser = ArgumentParser(description='Search for strings in text')
 parser.add_argument(
     'src',
     default='.',
@@ -10,30 +15,21 @@ parser.add_argument(
     The source directory containing text files.
     ''',
 )
+parser.add_argument(
+       
+        'input',
+         nargs='+', 
+         )
 
-parser.add_argument(    
-    'input1',
-
-
-)
-parser.add_argument(    
-    
-    'input2',
-
-
-)
 
 args = parser.parse_args()
-
-
-
 
 
 documents= os. listdir (args.src)
 print (documents) 
 print (os.getcwd())
 
-# add later, place on gui to show files scanned
+# add, place on gui to show files scanned
 
 def read_text(posh, current_report):
     qoutes = open (os.getcwd()+"\\"+current_report, encoding="utf-8")
@@ -48,24 +44,34 @@ def read_text(posh, current_report):
 
 
 def read_list_of_bad():
+    return args.input
     
-    return [args.input1, args.input2]
 
 ### set a counter on report_currently_reading to start at 0, started a loop
 report_number_count= len (documents)
 report_currently_reading = 0
 while report_currently_reading < report_number_count:
 
-    # 2 a report is searched for any strings that are inputs
+    # 2 a report is searched for any strings on a text important1.txt
     result = read_list_of_bad()
     print (result)
-    # 3indicate if there is a match in strings 
+    # 3indicate if there is a match in strings on important1.txt and report
     has_matches = read_text(result, documents[report_currently_reading])
     print("{} (# {}) has_matches: {}".format(documents[report_currently_reading], report_currently_reading, has_matches))
-    printhere = open('list_of_noted.txt','a')
-    printhere.write(documents[report_currently_reading])
+    printhere = open('list_of_note.csv','a')
+    printhere.write(documents[report_currently_reading] )
+    printhere.write(',')
     printhere.write(str(has_matches))
+    printhere.write(',')
+    printhere.write('\n')
 
+    #indicate if there is a match in strings 
+    #if file has a finding put a copy into a specific folder
+    #only put normal template Xays into normal pile
+    #---read next file and do the same, so therefore must
+    #skip to next document
+    
+    # if report has matches true, then print report , and what text string matched
     
     
     report_currently_reading = report_currently_reading + 1
