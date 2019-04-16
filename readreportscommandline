@@ -52,10 +52,9 @@ report_number_count= len (documents)
 report_currently_reading = 0
 while report_currently_reading < report_number_count:
 
-    # 2 a report is searched for any strings on a text important1.txt
     result = read_list_of_bad()
     print (result)
-    # 3indicate if there is a match in strings on important1.txt and report
+
     has_matches = read_text(result, documents[report_currently_reading])
     print("{} (# {}) has_matches: {}".format(documents[report_currently_reading], report_currently_reading, has_matches))
     printhere = open('list_of_note.csv','a')
@@ -65,13 +64,7 @@ while report_currently_reading < report_number_count:
     printhere.write(',')
     printhere.write('\n')
 
-    #indicate if there is a match in strings 
-    #if file has a finding put a copy into a specific folder
-    #only put normal template Xays into normal pile
-    #---read next file and do the same, so therefore must
-    #skip to next document
-    
-    # if report has matches true, then print report , and what text string matched
+  
     
     
     report_currently_reading = report_currently_reading + 1
