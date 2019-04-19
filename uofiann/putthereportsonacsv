@@ -1,0 +1,35 @@
+import csv
+import os
+from xml.dom.minidom import parse
+
+def writeToCSV(frelation, file):
+    csvfile = open('data.csv', 'a')
+    name = file
+    fieldnames = ['name', 'indication', 'findings','comparison']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+    relation = frelation.getElementsByTagName("AbstractText")
+    for elem in relation:
+        label = elem.attributes["Label"].value
+        value = ''
+        if len(elem.childNodes) > 0:
+            value = elem.childNodes[0].nodeValue
+        if label == "INDICATION":
+            indication = value
+        elif label == "FINDINGS":
+            findings = value
+        elif label == "COMPARISON":
+            comparison = value
+    writer.writerow({'indication': indication, 'name': name, 'findings': findings,'comparison': comparison})
+
+def makefirstlineindatacsv():
+    csvfile = open('data.csv', 'w')
+    fieldnames = ['name', 'indication', 'findings','comparison']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+    writer.writeheader()
+
+makefirstlineindatacsv()
+for root, dirs, files in os.walk('documents/ecgen-radiology'):
+    for file in files:
+        if file.endswith('.xml'):
+            xmldoc = parse(os.path.join(root, file))
+            writeToCSV(xmldoc, file)
