@@ -31,7 +31,7 @@ def graph_the_lines(file):
     )
 
     fig = mygraph.get_figure()
- 
+ #here it saves into a png; change png title as you wish
     fig.savefig('manasco1.png')
 
 def newkindofplot(file):
@@ -42,6 +42,6 @@ def newkindofplot(file):
     df.plot(ax=ax, x='x5', y='y5', style='-', color='black',  markersize=12, linewidth=1)
     fig = ax.get_figure()
     fig.savefig('manascombe2r.png')
-
+#here it runs on csv files in the same directory; modify to any csv files set up as example files (to be added)
 graph_the_lines('manascomber2.csv')
 newkindofplot('manascomber2.csv')
