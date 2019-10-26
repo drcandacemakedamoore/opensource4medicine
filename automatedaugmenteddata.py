@@ -1,3 +1,5 @@
+#this only runs through images, does not ,multiply the matrix to augment data
+# to augment data use code in synthrad folder- multiply the matrix as in that code
 import numpy as np
 import os
 import PIL
