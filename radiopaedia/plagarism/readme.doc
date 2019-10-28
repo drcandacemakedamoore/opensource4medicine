@@ -1,0 +1,3 @@
+In this folder there will be several pieces of code to check Radiopaedia for plaigarism. The basic algorithms possible for this project would include have differing levels of complexity, but will go beyond a simple string-compare.
+Algorithms of interest include Wagner-Fisher and others for comparing strings.  
+Once the code is completed it will be put on on an extremely permissive lisence in line with Radiopaedia's goals (providing a resource that is free).
