@@ -8,13 +8,6 @@ from skimage.data import shepp_logan_phantom
 from PIL import Image, ImageFilter
 
 
-
-#
-
-
-
-
-
 def show(img, cmap=None):
     cmap = cmap or plt.cm.gray
     fig, ax = plt.subplots(1, 1, figsize=(8, 6))
