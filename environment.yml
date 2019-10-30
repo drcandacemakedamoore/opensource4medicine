@@ -9,4 +9,4 @@ dependencies:
   - dill
   - pandas
   - pillow
-  - skimage
+  - scikit-image
